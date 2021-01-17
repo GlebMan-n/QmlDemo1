@@ -12,13 +12,11 @@ MoviePlayer::MoviePlayer(QObject *parent) : QObject(parent)
 
 void MoviePlayer::onTimer()
 {
-
     if(bPic)
         signSetBackgroundPic(QString("qrc:/bNsFIa.jpg"));
     else
         signSetBackgroundPic(QString("qrc:/yX0KvT.jpg"));
     bPic = !bPic;
-
     double bOpacity = ((double)QRandomGenerator::global()->bounded(1,9)) / 10;
     emit signSetBackgroundOpacity(bOpacity);
     double pOpacity = ((double)QRandomGenerator::global()->bounded(1,9)) / 10;
