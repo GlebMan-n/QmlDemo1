@@ -8,12 +8,17 @@
 class MoviePlayer : public QObject
 {
     Q_OBJECT
+
 public:
     explicit MoviePlayer(QObject *parent = nullptr);
+    Q_INVOKABLE QString getJson();
+    Q_INVOKABLE void setJson(QString json);
 
 private:
     QTimer* m_timer;
     bool bPic;
+    QString internalData;
+    QString m_json;
 private slots:
     void onTimer();
 signals:

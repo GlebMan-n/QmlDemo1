@@ -10,6 +10,17 @@ MoviePlayer::MoviePlayer(QObject *parent) : QObject(parent)
     bPic = true;
 }
 
+QString MoviePlayer::getJson()
+{
+    return m_json;
+}
+
+void MoviePlayer::setJson(QString json)
+{
+    m_json = json;
+    m_json = "ALTERED DATA IN CPP " + m_json;
+}
+
 void MoviePlayer::onTimer()
 {
     if(bPic)

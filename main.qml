@@ -9,19 +9,21 @@ Window {
     Rectangle {
         id: root
         MoviePlayer {
+            id: moviePlayer
             onSignSetBackgroundOpacity: {
-                console.log("onSignSetBackgroundOpacity ", opacity)
+                //console.log("onSignSetBackgroundOpacity ", opacity)
                 background.opacity = opacity;
             }
             onSignSetPulseOpacity: {
-                console.log("onSignSetPulseOpacity ", opacity)
+                // console.log("onSignSetPulseOpacity ", opacity)
                 pulse.opacity = opacity;
             }
             onSignSetTextOpacity: {
-                console.log("onSignSetTextOpacity ", opacity)
+                //console.log("onSignSetTextOpacity ", opacity)
                 txt.opacity = opacity;
             }
             onSignSetBackgroundPic: background.source = path;
+
         }
         anchors.fill: parent
         Image {
@@ -30,6 +32,16 @@ Window {
             source: "qrc:/bNsFIa.jpg"
             opacity: 0.5
             visible: true
+            MouseArea {
+                anchors.fill: parent
+                onClicked:             {
+                    var json = "data";
+                    console.log("DATA BEFORE CPP", json);
+                    moviePlayer.setJson(json);
+                    json = moviePlayer.getJson();
+                    console.log("Data from CPP in QML: ",json);
+                }
+            }
         }
         Image {
             id: pulse
